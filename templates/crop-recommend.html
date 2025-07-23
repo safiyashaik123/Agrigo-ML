@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="container py-5">
+  <h1 class="text-center text-success">🌾 Crop Recommendation</h1>
+  <p class="text-center">Provide soil composition and weather data to get the best crop suggestion.</p>
+
+  <div class="row mt-5">
+    <!-- Image on left side -->
+    <div class="col-md-6 text-center mb-4">
+      <img src="./static/images/upload-img.jpg" alt="Soil Analysis" class="img-fluid rounded shadow">
+    </div>
+
+    <!-- Form on right side -->
+    <div class="col-md-6">
+      <form action="/crop-recommendation" method="POST" class="bg-light p-4 rounded shadow">
+        <div class="mb-3">
+          <label for="N" class="form-label">Amount of Azote (N)</label>
+          <input type="number" min="0" class="form-control" name="N" id="N" required placeholder="e.g., 45">
+        </div>
+
+        <div class="mb-3">
+          <label for="P" class="form-label">Amount of Phosphorous (P)</label>
+          <input type="number" min="0" class="form-control" name="P" id="P" required placeholder="e.g., 30">
+        </div>
+
+        <div class="mb-3">
+          <label for="K" class="form-label">Amount of Potassium (K)</label>
+          <input type="number" min="0" class="form-control" name="K" id="K" required placeholder="e.g., 35">
+        </div>
+
+        <div class="mb-3">
+          <label for="temperature" class="form-label">Soil Temperature (°C)</label>
+          <input type="number" min="0" step="any" class="form-control" name="temperature" id="temperature" required placeholder="e.g., 23.5">
+        </div>
+
+        <div class="mb-3">
+          <label for="humidity" class="form-label">Soil Humidity (%)</label>
+          <input type="number" min="0" step="any" class="form-control" name="humidity" id="humidity" required placeholder="e.g., 68.0">
+        </div>
+
+        <div class="mb-3">
+          <label for="phosphore" class="form-label">Soil pH</label>
+          <input type="number" min="0" step="any" class="form-control" name="phosphore" id="phosphore" required placeholder="e.g., 6.5">
+        </div>
+
+        <div class="mb-4">
+          <label for="rainfall" class="form-label">Rainfall (mm)</label>
+          <input type="number" min="0" step="any" class="form-control" name="rainfall" id="rainfall" required placeholder="e.g., 150.0">
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-success btn-lg">Predict Crop</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
